@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/sign-up-screen-email.css" />
+    <script src="js/jquery-3.7.0.min.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -25,12 +26,14 @@
   </head>
   <body>
     <div class="sign-up-screen-email">
-      <form id="register_form" onclick="registerSubmitForm()" >
+      <form id="register_form" >
       <div class="card7">
-        <input type="submit" class="button5" value="Create Account"/>
+        <div id="register_form_fail" class="btn btn-outline-primary"style="display:none;"></div>
+
+        <input type="submit" class="button5" onclick="registerSubmitForm() " required value="Create Account"/>
 
         <div class="dropdown4">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input name="username" type="text" required class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
 
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_name">
@@ -38,12 +41,12 @@
           </div>
         </div>
         <div class="dropdown5">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input  name="email" required type="email" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_email">Email</div>
         </div>
         <div class="dropdown6">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input name="password"type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_pwd">Password</div>
         </div>

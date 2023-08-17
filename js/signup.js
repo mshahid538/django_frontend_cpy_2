@@ -1,3 +1,6 @@
+
+var backend_ip='127.0.0.1:8000'
+
 function logoClick(lang="EN") {
     window.location.href = "login.html";
 }
@@ -7,18 +10,24 @@ function emailsignClick() {
 }
 
 
-function registerSubmitForm() {
+function registerSubmitForm(lang='EN') {
     var form = $("#register_form");
+    $( "form" ).on( "submit", function( event ) {
+        //console.log("hello")
+       // console.log( $( this ).serializeArray() );
+        event.preventDefault();
+      } );
+
+  
+
     
-    serialize_array = form.serializeArray()
-    
-    pwd = serialize_array[2]["value"]
+  //  pwd = serialize_array[2]["value"]
     // // confirm_pwd = serialize_array[3]["value"]
-    email=form.serializeArray()[1]['value']
+    //email=form.serializeArray()[1]['value']
 
     $.ajax({
         type: 'POST',
-        url: backend_ip+'/register/',
+        url: 'http://127.0.0.1:8000/register/',
         data: form.serializeArray(),
         dataType: "text",
         success: function (response) {

@@ -7,7 +7,7 @@ const { reset } = require('nodemon');
 require('dotenv').config();
 
 // backend_ip = "https://api.astoryai.com";
-
+backend_ip = "localhost:8000";
 // if (typeof process.env.LOCAL_IP != "undefined") {
 //   backend_ip = process.env.LOCAL_IP
 // }
