@@ -10,9 +10,11 @@
     integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
     crossorigin="anonymous"></script>
   <link href="css/figma.css" rel="stylesheet" type="text/css">
+  <script src="js/jquery-3.7.0.min.js"></script>
   <link href="css/figma_sign_up_screen.css" rel="stylesheet" type="text/css">
+  <script src="js/auth.js"type="text/javascript"></script>
   
-
+  <script src="https://accounts.google.com/gsi/client" async></script>
   <script src="js/signup.js" type="text/javascript"></script>
 </head>
 
@@ -57,13 +59,34 @@
       </div>
       <hr>
       <div class="social-button">
-        <img class="social-icon11" alt="" src="./images/google.png" />
-        <div class="text11">Sign up with Google</div>
+        <div id="g_id_onload"
+    data-client_id="322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com"
+    data-context="signin"
+    data-ux_mode="popup"
+    data-callback="handleCredentialResponse"
+  
+    data-auto_prompt="true">>
+</div>
+
+<div class="g_id_signin"
+    data-type="standard"
+    data-shape="rectangular"
+    data-theme="outline"
+    data-text="signin_with"
+    data-size="large"
+    data-logo_alignment="left">
+    
+</div>
+
+<!-- Display the user's profile info -->
+<div class="pro-data hidden"></div>
+
+
       </div>
-      <div class="social-button">
-        <img class="social-icon11" alt="" src="./images/apple.svg" />
+      <!-- <div class="social-button"> -->
+        <!-- <img class="social-icon11" alt="" src="./images/apple.svg" />
         <div class="text11">Sign up with Apple</div>
-      </div>
+      </div> -->
       <div class="social-button" >
         <img class="social-icon11" alt="" src="./images/mail.svg" />
         <div class="text11" href='./sign-up-screen-email.html' onclick="emailsignClick()">Sign up with email</div>

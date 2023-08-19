@@ -46,6 +46,7 @@ function registerSubmitForm(lang='EN') {
             }
         },
         error: function (jqXHR, exception) {
+            console.log("error")
             var msg = '';
             if (jqXHR.status === 0) {
                 msg = 'Not connect.\n Verify Network. Or Server is down, please wait.';
@@ -54,12 +55,14 @@ function registerSubmitForm(lang='EN') {
             } else if (jqXHR.status == 404) {
                 msg = 'Requested page not found. [404]';
             } else if (jqXHR.status == 406) {
+                console.log("some error here")
                 error_response = $.parseJSON(jqXHR.responseText)
                 var errors = $.parseJSON(error_response["errors"]);
+               
                 for (var key in errors) {
                     msg += errors[key][0]["message"]
-                    msg += ' '
-                }
+                    
+                }msg += 'UserName and Email should unique '
             }
             else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
@@ -72,6 +75,7 @@ function registerSubmitForm(lang='EN') {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
+console.log(msg)
             document.getElementById("register_form_fail").innerHTML = msg
             document.getElementById("register_form_fail").style.color = "red"
         }

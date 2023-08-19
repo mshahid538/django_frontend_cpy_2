@@ -18,7 +18,8 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto Mono:wght@400&display=swap"
-    />
+    /> <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="js/auth.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sue Ellen Francisco:wght@400&display=swap"
@@ -72,24 +73,43 @@
           <div class="social-button13">
             <img class="social-icon16" alt="" src="./public/social-icon8.svg" />
 
-            <div class="text16">Sign in with Google</div>
+            <div class="social-button">
+              <div id="g_id_onload"
+          data-client_id="322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-callback="handleCredentialResponse"
+        
+          data-auto_prompt="true">>
+      </div>
+      
+      <div class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="signin_with"
+          data-size="large"
+          data-logo_alignment="left">
+          
+      </div>
+      
           </div>
           <div class="social-button14">
             <img class="social-icon16" alt="" />
 
             <div class="text16">Sign in with Facebook</div>
           </div>
-          <div class="social-button13">
+          <!-- <div class="social-button13">
             <img class="social-icon16" alt="" src="./public/social-icon6.svg" />
 
             <div class="text16">Sign in with Apple</div>
-          </div>
+          </div> -->
           <div class="social-button14">
             <img
               class="social-icon16"
               alt=""
               src="./public/social-icon10.svg"
-            />
+            </div>
 
             <div class="text16">Sign in with Twitter</div>
           </div>
@@ -97,7 +117,7 @@
         <div class="or1">OR</div>
       </div>
     </form>
-      <img class="eye-off-icon1" alt="" src="./public/eyeoff.svg" />
+      <!-- <img class="eye-off-icon1" alt="" src="./public/eyeoff.svg" /> -->
     </div>
   </body>
 </html>

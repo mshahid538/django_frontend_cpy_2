@@ -18,18 +18,21 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto Mono:wght@400&display=swap"
     />
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sue Ellen Francisco:wght@400&display=swap"
     />
     <script src="js/signup.js" type="text/javascript"></script>
+    <script src="js/auth.js" type="text/javascript"></script>
   </head>
   <body>
     <div class="sign-up-screen-email">
       <form id="register_form" >
       <div class="card7">
-        <div id="register_form_fail" class="btn btn-outline-primary"style="display:none;"></div>
-
+        <div class="btn btn-outline-primary">
+        <div id="register_form_fail" class="btn btn-outline-primary"></div>
         <input type="submit" class="button5" onclick="registerSubmitForm() " required value="Create Account"/>
 
         <div class="dropdown4">
@@ -50,22 +53,53 @@
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_pwd">Password</div>
         </div>
-        <img class="eye-off-icon" alt="" src="./public/eyeoff.svg" />
+        <!-- <img class="eye-off-icon" alt="" src="./public/eyeoff.svg" /> -->
         
         <b class="continue-with-email">Continue with Email</b>
         <div class="line-div"></div>
         <div class="card-child1"></div>
         <div class="social-button-groups">
           <div class="social-button4">
-            <img class="social-icon7" alt="" src="./public/social-icon5.svg" />
+            <!-- <img class="social-icon7" alt="" src="./public/social-icon5.svg" /> -->
+            <!-- <a href="https://accounts.google.com/o/oauth2/auth?
+            scope=email&
+            response_type=code&
+            redirect_uri=http://127.0.0.1:8000/google_oauth_callback&
+            
+            client_id=322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com">
+            Login with Google
+        </a> -->
+<!-- Sign In With Google button with HTML data attributes API -->
+<div id="g_id_onload"
+    data-client_id="322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com"
+    data-context="signin"
+    data-ux_mode="popup"
+    data-callback="handleCredentialResponse"
+  
+    data-auto_prompt="true">>
+</div>
 
-            <div class="text7">Sign up with Google</div>
+<div class="g_id_signin"
+    data-type="standard"
+    data-shape="rectangular"
+    data-theme="outline"
+    data-text="signin_with"
+    data-size="large"
+    data-logo_alignment="left">
+    
+</div>
+
+<!-- Display the user's profile info -->
+<div class="pro-data hidden"></div>
+
+
+           
           </div>
-          <div class="social-button4">
+          <!-- <div class="social-button4">
             <img class="social-icon7" alt="" src="./public/social-icon6.svg" />
 
             <div class="text7">Sign up with Apple</div>
-          </div>
+          </div> -->
           <div class="social-button5">
             <img class="social-icon7" alt="" src="./public/social-icon7.svg" />
 
@@ -76,5 +110,11 @@
       </form> 
       </div>
     </div>
+  
   </body>
+
 </html>
+
+
+
+<!-- 322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com -->
