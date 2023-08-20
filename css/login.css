@@ -85,7 +85,7 @@
   color: var(--mono-black);
   text-align: center;
   display: inline-block;
-  width: 383px;
+ 
   height: 45px;
 }
 .create-one {
@@ -230,4 +230,45 @@
   font-size: var(--p-size);
   color: var(--mono-gray-3);
   font-family: var(--p);
+}
+
+
+@media only screen and (max-width:480px){
+ .welcome-back {
+  top: 125px;
+  left: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--mono-black);
+  text-align: center;
+  display: inline-block;
+ 
+  height: 45px;
+}
+.b4{
+  left:150px;
+}
+.dropdown9{
+  left:10px;
+  width:320px;
+}
+.dropdown10{
+  left:10px;
+  width:320px;
+}
+.forgot-password{
+  left:200px;
+}
+.button11{
+  left:70px;
+}
+.social-button-groups2{
+  margin-left:0px;
+  left:10px;
+  width:300px;
+}
+.dont-have-an-container{
+ 
+  left:auto;
+}
 }

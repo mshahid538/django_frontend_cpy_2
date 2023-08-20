@@ -41,7 +41,12 @@
     flex-direction: column;
     gap: 50px;
 }
+@media only screen and (max-width:480px){
+    .wrapper{
+        padding-top:0px;
 
+    }
+}
 .header_title {
     margin-top: 0px;
     margin-right: auto;
