@@ -3,7 +3,7 @@ function resetpwdClick() {
 }
 
 function loginSubmitForm(lang='EN') {
-    console.log("hellolllll")
+  
     $( "form" ).on( "submit", function( event ) {
         //onsole.log("hello")
        // console.log( $( this ).serializeArray() );
@@ -32,7 +32,8 @@ function loginSubmitForm(lang='EN') {
                 window.localStorage.setItem('user_pricing_tier', parse_response["pricing_tier"]);
                 window.localStorage.setItem('user_trial_count', parse_response["trial_count"]);
                 window.localStorage.setItem('user_email', parse_response["email"]);
-                
+                window.localStorage.setItem('user_login', true);
+
                 if (lang=="EN") {
                     window.location.replace('/index.html');
                 } 

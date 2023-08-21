@@ -25,22 +25,24 @@
     <h2 class="header_title">
       <span>ASTORY.AI</span>
     </h2>
-    <nav class="header_navigation">
-      <a href="#">HOME</a>
-      <a href="#">FEATURES</a>
-      <a href="#">ABOUT</a>
-      <a href="#">PRICING</a>
-    </nav>
+
+    <nav id="myLinks" class="header_navigation topnav">
+      
+      <a style="text-align:center"href="#">HOME</a>
+      <a style="text-align:center"href="#">FEATURES</a>
+      <a style="text-align:center"href="#">ABOUT</a>
+      <a style="text-align:center"href="#">PRICING</a>
     <nav id="login-111" class="header_navigation_login" >
      
         <a href="/login.html">Log in</a>
         <a href="#" class="button" onclick="registerClick()">Start for Free</a>
       </nav>
-    </nav>
+    
     <nav id="logout-111"style="display:none; margin-right:25px;" class="header_navigation_login ">
       <a onclick="logout()"class="btn btn-outline-primary " href="/">Logout <span style="padding-left:5px ;font-size:16px" id="username"></span></a>
-    </nav>
-    <i class="fa fa-bars menu-icon"></i>
+    </nav></nav>
+    <a class="hover"href="javascript:void(0);"onclick="hoverFunction()">
+    <i style="cursor:pointer;"class="fa fa-bars menu-icon"></i></a>
     <i class="fa fa-times-circle close-ico"></i>
   </header>
   <div class="wrapper">
@@ -71,7 +73,7 @@
       </div>
       <div class="wrapper_row_1">
         <div id="video_preview_wrapper">
-          <iframe width="538" height="305" src="https://www.youtube.com/embed/WuljKartv2U" title="YouTube video player"
+          <iframe width="538" height="305" src="https://www.youtube.com/embed/WuljKartvvideo player"class="videoplayer"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
@@ -128,16 +130,26 @@
  
 var logout111=document.getElementById("logout-111")
 var userget=document.getElementById('username')
-    if (window.localStorage.getItem('user_id')){
+    if (window.localStorage.getItem('user_login')){
       
     login111.style.display="none";
-    logout111.style.display="block"
+    logout111.style.display="block";
     userget.textContent=localStorage.getItem('username')
     }else{
           login111.style.display="flex";
     }
     logout=function(){
       localStorage.clear()
+    }
+  </script>
+  <script>
+    function hoverFunction(){
+     var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
     }
   </script>
 </body>

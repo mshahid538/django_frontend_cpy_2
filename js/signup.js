@@ -36,6 +36,8 @@ function registerSubmitForm(lang='EN') {
             window.localStorage.setItem('username', tmp_response["username"]);
             window.localStorage.setItem('user_id', tmp_response["id"]);
             window.localStorage.setItem('token', tmp_response["token"]);
+            window.localStorage.setItem('user_login', true);
+
             // window.localStorage.setItem('user_pricing_tier', tmp_response["pricing_tier"]);
             // window.localStorage.setItem('user_trial_count', tmp_response["trial_count"]);
             window.localStorage.setItem('user_email', tmp_response["email"]);
