@@ -271,4 +271,7 @@
  
   left:auto;
 }
+.card13{
+  left:calc(2%);
+}
 }

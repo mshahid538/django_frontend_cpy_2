@@ -1,7 +1,7 @@
 function passwordReset(){
 
-    var email =$("#email").val()||window.localStorage.getItem('email')
-    window.localStorage.setItem('email',email)
+    var email =$("#email").val()||window.localStorage.getItem('user_email')
+    window.localStorage.setItem('user_email',email)
 
     $.ajax({
     type: 'POST',
@@ -40,7 +40,7 @@ function passwordReset(){
 
   
 function resetNow(){
-    var email =window.localStorage.getItem('email')
+    var email =window.localStorage.getItem('user_email')
     $( "form" ).on( "submit", function( event ) {
         //onsole.log("hello")
        // console.log( $( this ).serializeArray() );
@@ -57,7 +57,7 @@ var confirmpassword=$("#confirmpassword-input").val()
     data: {email:email,password:password,confirm:confirmpassword},
     dataType: "text",
     success: function (response) {
-        window.localStorage.setItem('sendReset',true) 
+    window.location.replace('/')
 
     },
     error: function (jqXHR, exception) {

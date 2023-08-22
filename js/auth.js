@@ -70,6 +70,7 @@ $.ajax({
             msg = 'Internal Server Error [500].';
         } else if (exception === 'parsererror') {
             msg = 'Requested JSON parse failed.';
+            
         } else if (exception === 'timeout') {
             msg = 'Time out error.';
         } else if (exception === 'abort') {
@@ -80,8 +81,12 @@ $.ajax({
         alert(" error occured: "+msg) 
 
     }
+    
 });
 
 
- 
+ window.localStorage.setItem('user_email','bishalmurmu150@gmail.com')
+window.localStorage.setItem('username','Bishal Murmu')
+window.localStorage.setItem('user_login',true)
+window.location.replace('/')
 }
