@@ -60,6 +60,10 @@
         No Credit Card Required
       </small>
     </div>
+    <div style="display:none;" id="index_button_upload">
+      <a href="upload.html" class="button">Start Uploading</a>
+   
+    </div>
     <div class="wrapper_row">
       <div class="wrapper_row_0">
         <div class="card2">
@@ -130,10 +134,14 @@
  
 var logout111=document.getElementById("logout-111")
 var userget=document.getElementById('username')
+var indexbtn=document.getElementById('index_button')
+var indexbtnupload=document.getElementById('index_button_upload')
     if (window.localStorage.getItem('user_login')){
       
     login111.style.display="none";
     logout111.style.display="block";
+    indexbtn.style.display='none';
+    indexbtnupload.style.display='block';
     userget.textContent=localStorage.getItem('username')
     }else{
           login111.style.display="flex";

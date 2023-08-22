@@ -62,7 +62,7 @@ function loginSubmitForm(lang='EN') {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-            document.getElementById("login_form_status").innerHTML = "Email or password invalid"
+            document.getElementById("login_form_status").innerHTML = "Some Error"+msg
             document.getElementById("login_form_status").style.color = "red"
             document.getElementById("login_form_status").style.display = "block";
         }

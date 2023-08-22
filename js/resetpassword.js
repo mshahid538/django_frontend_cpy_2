@@ -53,7 +53,7 @@ var confirmpassword=$("#confirmpassword-input").val()
     console.log(form.serializeArray())
     $.ajax({
     type: 'POST',
-    url:  'http://127.0.0.1:8000/googleoauth/reset/',
+    url:  'http://127.0.0.1:8000/custom/reset/',
     data: {email:email,password:password,confirm:confirmpassword},
     dataType: "text",
     success: function (response) {

@@ -30,7 +30,7 @@
      //Performing ajax request to googleoauth which basically acts as a proxy to real google auth request to prevent cors problem 
 $.ajax({
     type: 'POST',
-    url:  'http://127.0.0.1:8000/googleoauth/',
+    url:  'http://127.0.0.1:8000/custom/',
     data: JSON.stringify({ request_type:'user_auth', credential: response.credential }),
     dataType: "text",
     success: function (response) {
@@ -81,5 +81,7 @@ $.ajax({
 
     }
 });
+
+
  
 }
