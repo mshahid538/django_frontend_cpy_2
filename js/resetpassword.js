@@ -2,6 +2,8 @@ function passwordReset(){
 
     var email =$("#email").val()||window.localStorage.getItem('user_email')
     window.localStorage.setItem('user_email',email)
+    
+
 
     $.ajax({
     type: 'POST',
@@ -36,6 +38,7 @@ function passwordReset(){
     }
     
 });
+window.localStorage.setItem('sendReset',true) 
 }
 
   

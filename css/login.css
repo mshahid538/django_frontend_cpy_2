@@ -195,7 +195,15 @@
 .card13,
 .or1 {
   position: absolute;
+
+    display: flex;
+    justify-content: cet;
+    justify-content: center;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-left: -86px;
 }
+
 .or1 {
   top: 481px;
   left: 248px;
@@ -272,6 +280,6 @@
   left:auto;
 }
 .card13{
-  left:calc(2%);
+  left:calc(25%);
 }
 }
