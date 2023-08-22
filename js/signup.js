@@ -46,6 +46,8 @@ function registerSubmitForm(lang='EN') {
             } else if (lang=="CN") {
                 window.location.replace('/index-cn.html');
             }
+            document.getElementById("toastbody").textContent = "Success"
+            document.getElementById("toastbody").classList.add("text-success")
         },
         error: function (jqXHR, exception) {
             console.log("error")
@@ -77,9 +79,8 @@ function registerSubmitForm(lang='EN') {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-console.log(msg)
-            document.getElementById("register_form_fail").innerHTML = msg
-            document.getElementById("register_form_fail").style.color = "red"
+            document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
         }
     });
 }

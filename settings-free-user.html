@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
     />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -22,19 +21,57 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sue Ellen Francisco:wght@400&display=swap"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
     <script src="js/jquery-3.7.0.min.js"></script>
     <script src="js/resetpassword.js"type="text/javascript"></script>
   </head>
   <body>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"data-bs-delay="3000">
+        <div class="toast-header">
+          
+          <strong class="me-auto"></strong>
+          <small class="text-danger"></small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div id="toastbody" class=" toast-body">
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Delete Account</p>
+        <form>
+          <label for="password">Your Password:</label><br>
+          <input id="password" style="width:75%;" placeholder="Password"class="form-control" type="password" name="password" />
+          <label for="confirmpassword">Confirm Password:</label><br>
+
+          <input id="confirmpassword" style="width:75%;" placeholder="Confirm Password"class="form-control" type="password" name="password" />
+<br>
+          <div id="liveToastBtn2" style="text-align:center;"><div style="text-align:center;" onclick="onDelete();" class="btn btn-primary">Remove Account</div></div>
+          
+        </form>
+      </div>
+    
+    </div>
     <div class="settings-free-user">
+
       <div class="settings">Settings</div>
       <div class="button6">
         <a href="/"><div class="update-property">Back</div></a>
       </div>
       <div class="account">Account</div>
       <div class="notifications">Notifications</div>
-      <div style="cursor:pointer;" onclick="onDelete();"class="delete-account">Delete Account</div>
+      <div id="myBtn" style="cursor:pointer;" class="delete-account">Delete Account</div>
       <div class="card9"></div>
+    
       <div class="card10">
         <div class="toggle2">
           <div class="toggle3">
@@ -93,7 +130,7 @@
         
         <div  class="update-property">Edit </div>
       </div>
-      <div onclick="onSubmitName()" style="display:none;" id="submit_name" class="button7">
+      <div  id="liveToastBtn"  onclick="onSubmitName()" style="display:none;" class="submit_name button7">
         <div  class="update-property-submit">Submit </div>
       </div>
       <a onclick="passwordReset();" href="./password-reset1.html">
@@ -104,7 +141,7 @@
       <div id="edit_email" class="button9">
         <div class="update-property">Edit </div>
       </div>
-      <div onclick="onSubmitEmail()" style="display:none;" id="submit_email" class="button9">
+      <div  id="liveToastBtn1"  onclick="onSubmitEmail()" style="display:none;"  class="submit_email button9">
         <div  class="update-property-submit">Submit</div>
       </div>
     </div>
@@ -124,8 +161,8 @@
       var input_name=document.getElementById('input_name')
       var static_email=document.getElementById('static_email')
       var input_email=document.getElementById('input_email')
-      var submit_name=document.getElementById('submit_name')
-      var submit_email=document.getElementById('submit_email')
+      var submit_name=document.querySelector('.submit_name')
+      var submit_email=document.querySelector('.submit_email')
       var username=document.getElementById("username")
       var email=document.getElementById("email")
       username.value=curName
@@ -148,8 +185,6 @@
         var currentemail =window.localStorage.getItem('user_email')
         var newEmail=email.value
        
-
-   
     $.ajax({
     type: 'POST',
     url:  'http://127.0.0.1:8000/custom/edit_email/',
@@ -158,16 +193,19 @@
     success: function (response) {
       
       parse_response = $.parseJSON(response)
-      console.log(parse_response)
+      
       success=parse_response['success']
      if (!success){
-      alert(parse_response['msg'])
+      document.getElementById("toastbody").textContent = "Some Error: "+parse_response['msg']
+            document.getElementById("toastbody").classList.add("text-danger");
       return 
      }
-            user_email = parse_response["user_email"]
+     document.getElementById("toastbody").textContent = "Successfully Email updated"
+            document.getElementById("toastbody").classList.add("text-success")
+     
+     user_email = parse_response["user_email"]
             
 window.localStorage.setItem('user_email',user_email)
-window.location.replace('/')
     },
     error: function (jqXHR, exception) {
        // document.getElementById("login_id").value = "Login"
@@ -189,7 +227,9 @@ window.location.replace('/')
         } else {
             msg = 'Uncaught Error.\n' + jqXHR.responseText;
         }
-      alert("Faced some error:",msg)
+        
+        document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
     }
     
 });
@@ -209,12 +249,16 @@ window.location.replace('/')
       console.log(parse_response)
       success=parse_response['success']
      if (!success){
-      alert(parse_response['msg'])
-      return 
+      document.getElementById("toastbody").textContent = "Some Error: "+parse_response['msg']
+            document.getElementById("toastbody").classList.add("text-danger");  
+                return 
      }
+     document.getElementById("toastbody").textContent = "Successfully updated username"
+     document.getElementById("toastbody").classList.add("text-success")
+
       username = parse_response["username"]
       window.localStorage.setItem('username',username)
-      window.location.replace('/')
+    
     },
     error: function (jqXHR, exception) {
        // document.getElementById("login_id").value = "Login"
@@ -236,19 +280,33 @@ window.location.replace('/')
         } else {
             msg = 'Uncaught Error.\n' + jqXHR.responseText;
         }
-      alert("Faced some error:",msg)
+        document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
     }
     
 });
       }
 
       function onDelete(){
+var password=$("#password").val()
+var confirmpassword=$("#confirmpassword").val()
         $.ajax({
     type: 'POST',
     url:  'http://127.0.0.1:8000/custom/delete/',
-    data: {'email':window.localStorage.getItem('user_email')},
+    data: {'email':window.localStorage.getItem('user_email'),'password':password,'confirm_password':confirmpassword},
     dataType: "text",
     success: function (response) {
+      parse_response = $.parseJSON(response)
+      console.log(parse_response)
+      success=parse_response['success']
+     if (!success){
+      document.getElementById("toastbody").textContent = "Some Error: "+parse_response['msg']
+            document.getElementById("toastbody").classList.add("text-danger");
+      return 
+     }
+     document.getElementById("toastbody").textContent = "Successfully deleted your account"
+            document.getElementById("toastbody").classList.add("text-success")
+
       window.localStorage.clear()
       window.location.replace('/')
     },
@@ -272,11 +330,64 @@ window.location.replace('/')
         } else {
             msg = 'Uncaught Error.\n' + jqXHR.responseText;
         }
-      alert("Faced some error:",msg)
+        document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
     }
     
 });
       }
     </script>
-  </body>
+    <script>// Get the modal
+      var modal = document.getElementById("myModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks on the button, open the modal
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      } </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastTrigger1=document.getElementById('liveToastBtn1')
+        const toastTrigger2=document.getElementById('liveToastBtn2')
+
+        const toastLiveExample = document.getElementById('liveToast')
+        
+        if (toastTrigger1) {
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger1.addEventListener('click', () => {
+            toastBootstrap.show()
+          })
+
+        }
+        if (toastTrigger) {
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+          })}
+          if (toastTrigger2) {
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger2.addEventListener('click', () => {
+            toastBootstrap.show()
+          })}
+        </script> 
+
+      </body>
 </html>

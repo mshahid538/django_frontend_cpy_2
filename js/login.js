@@ -41,6 +41,8 @@ function loginSubmitForm(lang='EN') {
                      window.location.replace('/index-cn.html');
                  }
             } 
+            document.getElementById("toastbody").textContent = "Success"
+            document.getElementById("toastbody").classList.add("text-success")
         },
         error: function (jqXHR, exception) {
            // document.getElementById("login_id").value = "Login"
@@ -50,7 +52,7 @@ function loginSubmitForm(lang='EN') {
             } else if (jqXHR.status == 401) {
                 msg = 'Wrong username or password.'; 
             } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
+                msg = 'Email doesnot exists. [404]';
             } else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
@@ -62,9 +64,9 @@ function loginSubmitForm(lang='EN') {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-            document.getElementById("login_form_status").innerHTML = "Some Error"+msg
-            document.getElementById("login_form_status").style.color = "red"
-            document.getElementById("login_form_status").style.display = "block";
+            
+            document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
         }
     });
 }

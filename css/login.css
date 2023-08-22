@@ -277,7 +277,7 @@
 }
 .dont-have-an-container{
  
-  left:auto;
+  left:0px;
 }
 .card13{
   left:calc(25%);
