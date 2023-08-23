@@ -2,9 +2,6 @@ function passwordReset(){
 
     var email =$("#email").val()||window.localStorage.getItem('user_email')
     window.localStorage.setItem('user_email',email)
-    
-
-
     $.ajax({
     type: 'POST',
     url:  'http://127.0.0.1:8000/contact/',
