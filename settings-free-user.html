@@ -61,15 +61,34 @@
       </div>
     
     </div>
+
+   <!-- Modal content -->
+   <div id="myModal1" class="modal">
+
+   <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Do You Really want to logout?</p>
+   
+<br>
+      <div id="liveToastBtn2" style="text-align:center;"><div style="text-align:center;" onclick="logout();" class="btn btn-primary">Log out</div></div>
+      
+   
+  </div></div>
+
+</div>
+
     <div class="settings-free-user">
 
       <div class="settings">Settings</div>
       <div class="button6">
-        <a href="/"><div class="update-property">Back</div></a>
+        <a style="text-decoration:none;" href="/"><div class="update-property1">Back</div></a>
       </div>
       <div class="account">Account</div>
       <div class="notifications">Notifications</div>
+
       <div id="myBtn" style="cursor:pointer;" class="delete-account">Delete Account</div>
+      <div id="myBtn1" style="cursor:pointer;" class="logout-account">Log Out</div>
+
       <div class="card9"></div>
     
       <div class="card10">
@@ -89,7 +108,7 @@
         </div>
       </div>
       <div id="static_name"class="input">
-        <img class="rectangle-icon9" alt="" />
+        <input style="background-color:white;line-height:2.5" class="form-control" disabled alt="" />
 
         <div id="default_name" class="input-text1"></div>
         <div class="label1">Name</div>
@@ -104,13 +123,13 @@
       </div>
 <!--  -->
       <div id="static_email"class="input1">
-        <img class="rectangle-icon9" alt=""  />
+        <input style="background-color:white;line-height:2.5" class="form-control" disabled alt="" />
 
         <div id="default_email"class="input-text1"></div>
         <div class="label2">Email Address</div>
       </div>
       <!--  -->
-      <div id="input_email"style="display:none;"class="input1"">
+      <div id="input_email"style="display:none;"class="input1">
         <input style="color:black;"name="email"type="email" id="email"class="rectangle-icon9" alt="" />
 
         <div id="default_name" class="input-text1"></div>
@@ -119,7 +138,7 @@
 
       <!--  -->
       <div class="input2">
-        <img class="rectangle-icon9" alt=""  />
+        <input style="background-color:white;line-height:2.5" class="form-control" disabled alt="" />
 
         <div  class="input-text1">***********</div>
         <div class="label2">Password</div>
@@ -339,10 +358,10 @@ var confirmpassword=$("#confirmpassword").val()
     </script>
     <script>// Get the modal
       var modal = document.getElementById("myModal");
-      
+      var modal1=document.getElementById('myModal1')
       // Get the button that opens the modal
       var btn = document.getElementById("myBtn");
-      
+      var btn1=document.getElementById('myBtn1')
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
       
@@ -350,7 +369,9 @@ var confirmpassword=$("#confirmpassword").val()
       btn.onclick = function() {
         modal.style.display = "block";
       }
-      
+      btn1.onclick=function(){
+        modal1.style.display='block';
+      }
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
         modal.style.display = "none";
@@ -387,6 +408,12 @@ var confirmpassword=$("#confirmpassword").val()
           toastTrigger2.addEventListener('click', () => {
             toastBootstrap.show()
           })}
+
+          function logout(){
+            localStorage.clear()
+            window.location.replace('/')
+
+          }
         </script> 
 
       </body>

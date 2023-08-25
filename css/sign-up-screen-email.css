@@ -23,8 +23,11 @@ input[type=submit] {
   position: relative;
   line-height: 18px;
   font-weight: 500;
-  width: 111px;
+  width: 150px;
   height: 18px;
+  border:none;
+  background-color:var(--primary-pink);
+  color:white;
 }
 .button5,
 .rectangle-icon4 {
@@ -35,7 +38,7 @@ input[type=submit] {
   top: 417px;
   left: 164px;
   background-color: var(--primary-pink);
-  width: 250px;
+  width: 185px;
   display: flex;
   flex-direction: column;
   padding: var(--padding-mini) var(--padding-41xl);

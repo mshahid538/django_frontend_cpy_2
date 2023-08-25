@@ -51,6 +51,15 @@
   align-items: center;
   justify-content: flex-start;
 }
+.details-button-icon {
+  position: absolute;
+  top: 22px;
+  right:17px;
+  border-radius: var(--br-5xs);
+  width: 46px;
+  height: 48px;
+  overflow: hidden;
+}
 .drop-files-here {
   position: absolute;
   top: 227px;

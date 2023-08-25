@@ -114,11 +114,22 @@
   font-weight: 500;
   text-align: left;
 }
-.badge
+/* progress::-moz-progress-bar { background: blue; }
+progress::-webkit-progress-value { background: blue; } */
+
+progress { color: var(--primary-purple); 
+  position: absolute;
+  top: 433px;
+  left: 100px;
+
+width:315px;
+height:15px;}
+.badge,
 .details-button-icon {
   position: absolute;
-  top: 22px;
-  left: calc(50% + 692px);
+  
+  top: 27px;
+  right: 17px;
   border-radius: var(--br-5xs);
   width: 46px;
   height: 48px;
