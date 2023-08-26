@@ -64,11 +64,11 @@
           <div class="select6" id="user_email">Email</div>
         </div>
         <div class="dropdown6">
-          <input style="line-height:2.4;"name="password"type="password" required class="form-control" alt=""  />
+          <input style="line-height:2.4;"name="password" type="password" id="typepass" required class="form-control" alt=""  />
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_pwd">Password</div>
         </div>
-       <img class="eye-off-icon" alt="" src="./public/eyeoff.svg" />
+       <img class="eye-off-icon" alt="" onclick="Toggle()" src="./public/eyeoff.svg" />
         
         <b class="continue-with-email">Continue with Email</b>
         <div class="line-div"></div>
@@ -133,7 +133,24 @@ if (toastTrigger) {
     toastBootstrap.show()
   })
 }
-  </script>
+
+
+ // Change the type of input to password or text
+ function Toggle() {
+            let temp = document.getElementById("typepass");
+             
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+
+
+
+
+</script>
 
 <script src="js/auth.js" type="text/javascript"></script>
   </body>

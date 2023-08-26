@@ -69,7 +69,7 @@
           <div class="select11">Email</div>
         </div>
         <div class="dropdown10">
-          <input style="line-height:2.4;"name="password" required type="password" class="form-control"/>
+          <input style="line-height:2.4;"name="password" required type="password"  id="typepass" class="form-control"/>
 
           <!-- <img class="icondropdown8" alt="" src="./public/icondropdown.svg" /> -->
 
@@ -140,7 +140,7 @@
         <!-- </div> -->
         
       </div>
-     <img class="eye-off-icon1" alt="" src="./public/eyeoff.svg" /> 
+ <img class="eye-off-icon1" alt="" onclick="Toggle()" src="./public/eyeoff.svg" />
     </form>  <div class="or1">OR</div>
       
     </div>
@@ -154,7 +154,24 @@ if (toastTrigger) {
   toastTrigger.addEventListener('click', () => {
     toastBootstrap.show()
   })
-}</script>
+}
+
+
+ // Change the type of input to password or text
+ function Toggle() {
+            let temp = document.getElementById("typepass");
+             
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+
+
+
+</script>
 <script src="js/auth.js" type="text/javascript"></script>
 
 </body>
