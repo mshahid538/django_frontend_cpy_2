@@ -1,13 +1,17 @@
 const express = require('express');
+const cors=require('cors')
 const app = express();
 const path = require('path');
 const router = express.Router();
 const axios = require('axios');
 const { reset } = require('nodemon');
+
 require('dotenv').config();
+app.use(cors({ origin: "http://127.0.0.1:8000/accounts/google/login/callback/" }))
+
 
 // backend_ip = "https://api.astoryai.com";
-
+backend_ip = "localhost:8000";
 // if (typeof process.env.LOCAL_IP != "undefined") {
 //   backend_ip = process.env.LOCAL_IP
 // }

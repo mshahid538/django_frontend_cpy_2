@@ -114,16 +114,20 @@
   font-weight: 500;
   text-align: left;
 }
-.badge
+
+
 .details-button-icon {
   position: absolute;
-  top: 22px;
+  top: 27px;
   left: calc(50% + 692px);
   border-radius: var(--br-5xs);
   width: 46px;
   height: 48px;
   overflow: hidden;
+ 
 }
+
+
 .free-translations-remaining {
   position: absolute;
   top: 19px;

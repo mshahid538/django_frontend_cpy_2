@@ -10,6 +10,9 @@
   position: relative;
   line-height: 18px;
   font-weight: 500;
+  border:none;
+  background-color:var(--primary-pink);
+  color:white;
 }
 .button11,
 .rectangle-icon12 {
@@ -17,6 +20,7 @@
   border-radius: var(--br-5xs);
 }
 .button11 {
+  cursor:pointer;
   top: 414px;
   left: 168px;
   background-color: var(--primary-pink);
@@ -85,7 +89,7 @@
   color: var(--mono-black);
   text-align: center;
   display: inline-block;
-  width: 383px;
+ 
   height: 45px;
 }
 .create-one {
@@ -101,6 +105,7 @@
 .forgot-password {
   top: 317px;
   left: 351px;
+  color:var(--mono-gray-3)
 }
 .b4 {
   position: absolute;
@@ -141,6 +146,7 @@
   width: 401px;
   height: 25px;
 }
+
 .social-icon16 {
   position: relative;
   width: 24px;
@@ -195,10 +201,17 @@
 .card13,
 .or1 {
   position: absolute;
+
+    display: flex;
+  
+    justify-content: center;
+    margin: 0 auto;
+    margin-left: -86px;
 }
+
 .or1 {
   top: 481px;
-  left: 248px;
+  left: 325px;
   line-height: 20px;
 }
 .card13 {
@@ -214,8 +227,8 @@
 }
 .eye-off-icon1 {
   position: absolute;
-  top: 501px;
-  left: calc(50% + 270px);
+  top: 355px;
+  left: calc(50% + 180px);
   width: 24px;
   height: 24px;
   overflow: hidden;
@@ -230,4 +243,49 @@
   font-size: var(--p-size);
   color: var(--mono-gray-3);
   font-family: var(--p);
+}
+
+
+@media only screen and (max-width:480px){
+ .welcome-back {
+  top: 125px;
+  left: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--mono-black);
+  text-align: center;
+  display: inline-block;
+ 
+  height: 45px;
+}
+.b4{
+  left:150px;
+}
+.dropdown9{
+  left:10px;
+  width:320px;
+}
+.dropdown10{
+  left:10px;
+  width:320px;
+}
+.forgot-password{
+  left:200px;
+
+}
+.button11{
+  left:70px;
+}
+.social-button-groups2{
+  margin-left:0px;
+  left:10px;
+  width:300px;
+}
+.dont-have-an-container{
+ 
+  left:0px;
+}
+.card13{
+  left:calc(25%);
+}
 }

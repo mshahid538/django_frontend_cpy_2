@@ -1,5 +1,5 @@
 // backend_ip = "http://127.0.0.1:8000";
-backend_ip = "http://0.0.0.0:8181";
+backend_ip = "localhost:8000";
 
 
 function productSubmitForm(lang='EN') {
@@ -177,6 +177,7 @@ function registerSubmitForm(lang="EN") {
                 window.localStorage.setItem('user_pricing_tier', tmp_response["pricing_tier"]);
                 window.localStorage.setItem('user_trial_count', tmp_response["trial_count"]);
                 window.localStorage.setItem('user_email', tmp_response["email"]);
+                
                 if (lang=="EN") {
                     window.location.replace('/index.html');
                 } else if (lang=="CN") {
@@ -218,13 +219,14 @@ function registerSubmitForm(lang="EN") {
 }
 
 function loginSubmitForm(lang="EN") {
+    console.log("hello")
     var form = $("#login_form");
     document.getElementById("login_form_status").style.backgroundColor = "#92e2a9"
     document.getElementById("login_id").value = "Logging in..."
 
     $.ajax({
         type: 'POST',
-        url: backend_ip + '/login/',
+        url:  'https:127.0.0.1:8000/login/',
         data: form.serializeArray(),
         dataType: "text",
         success: function (response) {

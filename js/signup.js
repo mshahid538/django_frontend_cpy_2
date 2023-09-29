@@ -1,3 +1,6 @@
+
+var backend_ip='127.0.0.1:8000'
+
 function logoClick(lang="EN") {
     window.location.href = "login.html";
 }
@@ -7,18 +10,24 @@ function emailsignClick() {
 }
 
 
-function registerSubmitForm() {
+function registerSubmitForm(lang='EN') {
     var form = $("#register_form");
+    $( "form" ).on( "submit", function( event ) {
+        //console.log("hello")
+       // console.log( $( this ).serializeArray() );
+        event.preventDefault();
+      } );
+
+  
+
     
-    serialize_array = form.serializeArray()
-    
-    pwd = serialize_array[2]["value"]
+  //  pwd = serialize_array[2]["value"]
     // // confirm_pwd = serialize_array[3]["value"]
-    email=form.serializeArray()[1]['value']
+    //email=form.serializeArray()[1]['value']
 
     $.ajax({
         type: 'POST',
-        url: backend_ip+'/register/',
+        url: 'http://127.0.0.1:8000/register/',
         data: form.serializeArray(),
         dataType: "text",
         success: function (response) {
@@ -27,6 +36,8 @@ function registerSubmitForm() {
             window.localStorage.setItem('username', tmp_response["username"]);
             window.localStorage.setItem('user_id', tmp_response["id"]);
             window.localStorage.setItem('token', tmp_response["token"]);
+            window.localStorage.setItem('user_login', true);
+
             // window.localStorage.setItem('user_pricing_tier', tmp_response["pricing_tier"]);
             // window.localStorage.setItem('user_trial_count', tmp_response["trial_count"]);
             window.localStorage.setItem('user_email', tmp_response["email"]);
@@ -35,8 +46,11 @@ function registerSubmitForm() {
             } else if (lang=="CN") {
                 window.location.replace('/index-cn.html');
             }
+            document.getElementById("toastbody").textContent = "Success"
+            document.getElementById("toastbody").classList.add("text-success")
         },
         error: function (jqXHR, exception) {
+            console.log("error")
             var msg = '';
             if (jqXHR.status === 0) {
                 msg = 'Not connect.\n Verify Network. Or Server is down, please wait.';
@@ -45,12 +59,14 @@ function registerSubmitForm() {
             } else if (jqXHR.status == 404) {
                 msg = 'Requested page not found. [404]';
             } else if (jqXHR.status == 406) {
+                console.log("some error here")
                 error_response = $.parseJSON(jqXHR.responseText)
                 var errors = $.parseJSON(error_response["errors"]);
+               
                 for (var key in errors) {
                     msg += errors[key][0]["message"]
-                    msg += ' '
-                }
+                    
+                }msg += 'UserName and Email should unique '
             }
             else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
@@ -63,8 +79,8 @@ function registerSubmitForm() {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-            document.getElementById("register_form_fail").innerHTML = msg
-            document.getElementById("register_form_fail").style.color = "red"
+            document.getElementById("toastbody").textContent = "Some Error: "+msg
+            document.getElementById("toastbody").classList.add("text-danger");
         }
     });
 }

@@ -5,6 +5,8 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/sign-up-screen-email.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="js/jquery-3.7.0.min.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -17,20 +19,39 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto Mono:wght@400&display=swap"
     />
+ 
+    <meta name="google-signin-client_id" content="322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sue Ellen Francisco:wght@400&display=swap"
     />
     <script src="js/signup.js" type="text/javascript"></script>
+
   </head>
   <body>
     <div class="sign-up-screen-email">
-      <form id="register_form" onclick="registerSubmitForm()" >
-      <div class="card7">
-        <input type="submit" class="button5" value="Create Account"/>
 
+      <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"data-bs-delay="3000">
+          <div class="toast-header">
+            
+            <strong class="me-auto"></strong>
+            <small class="text-danger"></small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div id="toastbody" class=" toast-body">
+            
+          </div>
+        </div>
+      </div>
+      <form id="register_form" >
+      <div class="card7">
+        <div class="button5">
+        <input  id="liveToastBtn"  type="submit" class="button-text9" onclick="registerSubmitForm() "  value="Create Account"/>
+</div>
         <div class="dropdown4">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input style="line-height:2.4;" name="username" type="text" required class="form-control" />
 
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_name">
@@ -38,40 +59,104 @@
           </div>
         </div>
         <div class="dropdown5">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input style="line-height:2.4;" name="email" required type="email"class="form-control" />
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_email">Email</div>
         </div>
         <div class="dropdown6">
-          <input type="text" class="rectangle-icon4" alt="" src="./public/rectangle2.svg" />
+          <input style="line-height:2.4;"name="password" type="password" id="typepass" required class="form-control" alt=""  />
           <div class="no-vacancies2"></div>
           <div class="select6" id="user_pwd">Password</div>
         </div>
-        <img class="eye-off-icon" alt="" src="./public/eyeoff.svg" />
+       <img class="eye-off-icon" alt="" onclick="Toggle()" src="./public/eyeoff.svg" />
         
         <b class="continue-with-email">Continue with Email</b>
         <div class="line-div"></div>
         <div class="card-child1"></div>
         <div class="social-button-groups">
-          <div class="social-button4">
-            <img class="social-icon7" alt="" src="./public/social-icon5.svg" />
+          <div id="g_id_onload"
+          data-client_id="322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-login_uri="http://localhost:8000/custom/"
+          data-callback="handleCredentialResponse">
+     </div>
+     <div  class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-locale="en"
+     
+     data-logo_alignment="left">
+     
+    </div>
+     
 
-            <div class="text7">Sign up with Google</div>
-          </div>
-          <div class="social-button4">
+<!-- Display the user's profile info -->
+<div class="pro-data hidden"></div>
+
+
+           
+          <!-- </div> -->
+          <!-- <div class="social-button4">
             <img class="social-icon7" alt="" src="./public/social-icon6.svg" />
 
             <div class="text7">Sign up with Apple</div>
-          </div>
-          <div class="social-button5">
+          </div> -->
+        <!--   <div class="social-button5">
             <img class="social-icon7" alt="" src="./public/social-icon7.svg" />
 
             <div class="text7">Sign in with Twitter</div>
-          </div>
-        </div>
-        <div class="or">OR</div>
+          </div> -->
+         <!-- <div class="already-have-an-container">
+        <span>Already have an account?  </span>
+        <a href="./login.html" onclick="logoClick()">Log in</a>
+      </div>   </div> -->
+
+        
       </form> 
+
       </div>
+<div class="or">OR</div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+}
+
+
+ // Change the type of input to password or text
+ function Toggle() {
+            let temp = document.getElementById("typepass");
+             
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+
+
+
+
+</script>
+
+<script src="js/auth.js" type="text/javascript"></script>
   </body>
+
 </html>
+
+
+
+<!-- 322302178356-qeiht1u6u98b1n42rku6aen4ficbjp6r.apps.googleusercontent.com -->
